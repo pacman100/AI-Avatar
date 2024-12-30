@@ -25,8 +25,9 @@ async function initializeWebLLMEngine() {
     document.getElementById("download-status").classList.remove("hidden");
     let selectedModel = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
     const config = {
-        temperature: 1.0,
-        top_p: 1,
+        temperature: 0.2,
+        top_p: 0.9,
+        top_k: 50
     };
     await engine.reload(selectedModel, config);
 }
