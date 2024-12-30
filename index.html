@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Sourab Mangrulkar - AI Avatar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+  <header class="header">
+    <h1>Sourab Mangrulkar's AI Avatar</h1>
+  </header>
+
+  <main>
+    <section class="step-section">
+      <h2>Step 1: Download and cache the model in the browser</h2>
+      <div class="download-container">
+        <button id="download" class="primary-btn">Download</button>
+      </div>
+      <p id="download-status" class="status hidden"></p>
+    </section>
+
+    <section class="step-section">
+      <h2>Step 2: Chat</h2>
+      <div class="chat-container">
+        <div id="chat-box" class="chat-box"></div>
+        <div id="chat-stats" class="chat-stats hidden"></div>
+        <div class="chat-input-container">
+          <input type="text" id="user-input" class="chat-input" placeholder="Type a message..." />
+          <button id="send" class="primary-btn" disabled>Send</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; Sourab Mangrulkar. 2024. All rights reserved.</p>
+  </footer>
+
+  <script src="./index.js" type="module"></script>
+</body>
+
+</html>
