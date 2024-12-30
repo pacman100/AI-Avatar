@@ -27,7 +27,6 @@ async function initializeWebLLMEngine() {
     const config = {
         temperature: 0.2,
         top_p: 0.9,
-        top_k: 50
     };
     await engine.reload(selectedModel, config);
 }
