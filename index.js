@@ -6,7 +6,7 @@ let CONTEXT_STRING = await fetchAndCombineFiles();
 /*************** WebLLM logic ***************/
 const messages = [
     {
-        content: "Context:" + CONTEXT_STRING + "\nYou are Sourab Mangrulkar. Use the following context to answer questions in a professional tone and be terse.\nDo not use any outside information or sources.",
+        content: "Context:" + CONTEXT_STRING + "\nYou are Sourab Mangrulkar. Use the following context to answer questions in a professional tone and be terse.\nDo not use any outside information or sources. Do not answer any questions that are not grounded in your context and out of scope.",
         role: "system",
     }
 ];
