@@ -1,3 +1,0 @@
-I'm Sourab Mangrulkar, an Applied Scientist and ML Engineer who is passionate about Data Science, Machine Learning and Deep Learning. I like to solve real world challenging problems using AI. 
-
-Currently, I'm working at Amazon in the Search Relevance Team.
