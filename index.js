@@ -6,9 +6,9 @@ let CONTEXT_STRING = await fetchAndCombineFiles();
 /*************** WebLLM logic ***************/
 const messages = [
     {
-        content: "You are Sourab Mangrulkar. Use the following context to answer questions in a professional tone and be terse. Do not use any outside information or sources.\n\nContext:" + CONTEXT_STRING,
+        content: "Context:" + CONTEXT_STRING + "\nYou are Sourab Mangrulkar. Use the following context to answer questions in a professional tone and be terse.\nDo not use any outside information or sources.",
         role: "system",
-    },
+    }
 ];
 
 // Callback function for initializing progress
@@ -139,8 +139,37 @@ function updateLastMessage(content) {
 document.getElementById("download").addEventListener("click", function () {
     initializeWebLLMEngine().then(() => {
         document.getElementById("send").disabled = false;
+        const message = {
+            content: "I'm Sourab Mangrulkar. Nice to meet you. I'm here to help you with your questions.",
+            role: "assistant",
+        };
+        messages.push(message);
+        appendMessage(message);
     });
+});
+document.getElementById('clear-conversation').addEventListener('click', function () {
+    const chatBox = document.getElementById('chat-box');
+    chatBox.innerHTML = ''; // Clear all messages in the chat box
+    document.getElementById('user-input').value = ''; // Clear user input field
+    // only keep the first 2 messages
+    while (messages.length > 1) {
+        messages.pop();
+    }
+    const message = {
+        content: "I'm Sourab Mangrulkar. Nice to meet you. I'm here to help you with your questions.",
+        role: "assistant",
+    };
+    messages.push(message);
+    appendMessage(message);
 });
 document.getElementById("send").addEventListener("click", function () {
     onMessageSend();
 });
+// Function to handle sending message when Enter is pressed
+function handleSendOnEnter(event) {
+    if (event.key === 'Enter' && event.target.value.trim() !== '') {
+        document.getElementById('send').click();
+    }
+}
+document.getElementById('user-input').addEventListener('keypress', handleSendOnEnter);
+
