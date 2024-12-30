@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta charset="UTF-8" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="./index.css" />
 </head>
 
@@ -18,7 +20,7 @@
     <section class="step-section">
       <h2>Step 1: Download and cache the model in the browser</h2>
       <div class="download-container">
-        <button id="download" class="primary-btn">Download</button>
+        <button id="download" class="primary-btn"><i class="fa-solid fa-circle-down"></i> Download</button>
       </div>
       <p id="download-status" class="status hidden"></p>
     </section>
@@ -30,8 +32,9 @@
         <div id="chat-stats" class="chat-stats hidden"></div>
         <div class="chat-input-container">
           <input type="text" id="user-input" class="chat-input" placeholder="Type a message..." />
-          <button id="send" class="primary-btn" style="margin-right: 10px" disabled>Send</button>
-          <button id="clear-conversation" class="primary-btn">Clear Conversation</button>
+          <button id="send" class="primary-btn" style="margin-right: 10px" disabled><i
+              class="fa-solid fa-paper-plane"></i></button>
+          <button id="clear-conversation" class="primary-btn"><i class="fa-solid fa-trash"></i></button>
         </div>
       </div>
     </section>
