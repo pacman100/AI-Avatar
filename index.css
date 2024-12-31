@@ -159,10 +159,36 @@ body {
     background-color: #4a90e2;
     color: white;
     width: 100%;
-    position: absolute;
+    position: static;
     bottom: 0;
 }
 
 .footer p {
     margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .step-section,
+    .chat-container {
+        max-width: 90%;
+        margin: 10px auto;
+    }
+
+    .chat-container {
+        height: 400px;
+    }
+
+    .primary-btn {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .chat-input {
+        font-size: 0.9rem;
+    }
 }
