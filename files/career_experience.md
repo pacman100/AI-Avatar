@@ -8,6 +8,8 @@ Below is an outline of my work experience.
 *Search Relevance*
 
 - Using the latest advances in Large language Models (LLMs) and Generative AI (GenAI) to improve Search Relevance.
+  - Leveraged Frontier LLMs and their world knowledge for synthetic data annotation to improve Search Relevance for Natural Language Queries.
+  - Achieved 9% increase in products in top positions that are top brands, highly rated and exactly relevant for the "best" intent queries, e.g., "best headphones for work".
 
 ## ML Engineer
 **Hugging Face** | 04/2022 - 05-2024 | U.S. Remote
@@ -42,7 +44,7 @@ Below is an outline of my work experience.
 *Bing Ads International Team*
 
 - Implemented 15+ large scale ML models for Click Prediction across 5+ countries
-- Achieved RPM gains of 2-12% across countries
+- Achieved Revenue Per Mille (RPM) gains of 2-12% across countries
 - Incorporated user behavior features resulting in AUC-ROC gains of 3-10%
 
 ## Associate Consultant
