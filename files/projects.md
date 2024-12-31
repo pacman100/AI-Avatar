@@ -1,4 +1,6 @@
-# Projects
+# Personal Projects
+
+In this section, I have shared my personal projects and experiences.
 
 ## Instructor for LLM Courses and Workshop (08/2023 - Present)
 - Instructor for Finetuning LLMs and Training LLMs From Scratch courses

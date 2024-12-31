@@ -192,3 +192,41 @@ body {
         font-size: 0.9rem;
     }
 }
+
+.example-questions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.example-questions h3 {
+    width: 100%;
+    margin-bottom: 10px;
+    color: #4a90e2;
+}
+
+.example-question {
+    background: #f0f0f0;
+    border: 1px solid #ddd;
+    color: #333;
+    border-radius: 20px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.example-question:hover {
+    background: #e0e0e0;
+}
+
+/* Responsive tweaks for smaller screens */
+@media (max-width: 768px) {
+    .example-question {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}

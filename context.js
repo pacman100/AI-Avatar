@@ -1,5 +1,5 @@
 // context.js
-const files = ['about.md', 'career_experience.md', 'education.md', 'projects.md', 'publications.md', 'technical_skills.md'];
+const files = ['about.md', 'career_experience.md', 'education.md', 'technical_skills.md', 'publications.md', 'projects.md'];
 
 async function fetchAndCombineFiles() {
     let combinedContent = '';

@@ -1,0 +1,1 @@
+Tell me about a time when you faced a strict project deadline wherein you had to make trade-offs. What were the trade-offs and how did you handle them?

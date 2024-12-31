@@ -1,15 +1,17 @@
 import * as webllm from "https://esm.run/@mlc-ai/web-llm";
 import fetchAndCombineFiles from './context.js';
-
+marked.setOptions({ breaks: true, gfm: true });
 let CONTEXT_STRING = await fetchAndCombineFiles();
+console.log(CONTEXT_STRING);
 
 /*************** WebLLM logic ***************/
 const messages = [
     {
-        content: "Context:" + CONTEXT_STRING + "\nYou are Sourab Mangrulkar. Use the following context to answer questions in a professional tone and be terse.\nDo not use any outside information or sources. Do not answer any questions that are not grounded in your context and out of scope.",
+        content: "Context:" + CONTEXT_STRING + "\n\n\n# Instructions\n\nYou are an AI-Avatar of Sourab Mangrulkar who solely answers questions about Sourab Mangrulkar. Use the following context to answer questions in a professional tone and be terse. If you encounter any inappropriate or off-topic questions, politely redirect the user back to the main topics related to Sourab Mangrulkar.\nDo not add new details or hallucinate and be grounded in the provided context.",
         role: "system",
     }
 ];
+const GREETING_MESSAGE = "I'm **Sourab Mangrulkar**.\nNice to meet you. I'm here to help you with your questions.";
 
 // Callback function for initializing progress
 function updateEngineInitProgressCallback(report) {
@@ -25,8 +27,10 @@ async function initializeWebLLMEngine() {
     document.getElementById("download-status").classList.remove("hidden");
     let selectedModel = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
     const config = {
-        temperature: 0.2,
+        temperature: 0.01,
         top_p: 0.9,
+        max_tokens: 256,
+        repetition_penalty: 1.2
     };
     await engine.reload(selectedModel, config);
 }
@@ -58,7 +62,14 @@ async function streamingGenerating(messages, onUpdate, onFinish, onError) {
 }
 
 /*************** UI logic ***************/
+function formatMarkdown(content) {
+    const normalizedText = content.replace(/\\n/g, '\n');
+    const rawHtml = marked.parse(normalizedText);
+    return DOMPurify.sanitize(rawHtml);
+}
+
 function onMessageSend() {
+    console.log(messages)
     const input = document.getElementById("user-input").value.trim();
     const message = {
         content: input,
@@ -114,7 +125,7 @@ function appendMessage(message) {
     container.classList.add("message-container");
     const newMessage = document.createElement("div");
     newMessage.classList.add("message");
-    newMessage.textContent = message.content;
+    newMessage.innerHTML = formatMarkdown(message.content);
 
     if (message.role === "user") {
         container.classList.add("user");
@@ -132,19 +143,50 @@ function updateLastMessage(content) {
         .getElementById("chat-box")
         .querySelectorAll(".message");
     const lastMessageDom = messageDoms[messageDoms.length - 1];
-    lastMessageDom.textContent = content;
+    lastMessageDom.innerHTML = formatMarkdown(content);
+}
+
+function initializeAndAppendMessage(content, role) {
+    document.getElementById('send').disabled = false;
+    const message = {
+        content: content,
+        role: role,
+    };
+    messages.push(message);
+    appendMessage(message);
 }
 
 /*************** UI binding ***************/
 document.getElementById("download").addEventListener("click", function () {
     initializeWebLLMEngine().then(() => {
         document.getElementById("send").disabled = false;
-        const message = {
-            content: "I'm Sourab Mangrulkar. Nice to meet you. I'm here to help you with your questions.",
-            role: "assistant",
-        };
-        messages.push(message);
-        appendMessage(message);
+        initializeAndAppendMessage(GREETING_MESSAGE, "assistant");
+        // Fetch the faq.txt file and process its contents
+        fetch('files/faq.md')
+            .then(response => response.text())
+            .then(data => {
+                const lines = data.split('\n');
+                const questionContainer = document.getElementById('example-questions');
+
+                lines.forEach(line => {
+                    if (line.trim() !== '') { // Ensure it's not an empty line
+                        const button = document.createElement('button');
+                        button.className = 'example-question';
+                        button.setAttribute('data-question', line);
+                        button.textContent = line;
+
+                        // Attach click listener immediately
+                        button.addEventListener('click', () => {
+                            document.getElementById('user-input').value = line;
+                            onMessageSend();
+                        });
+                        questionContainer.appendChild(button);
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching the faq.txt file:', error);
+            });
     });
 });
 document.getElementById('clear-conversation').addEventListener('click', function () {
@@ -155,12 +197,7 @@ document.getElementById('clear-conversation').addEventListener('click', function
     while (messages.length > 1) {
         messages.pop();
     }
-    const message = {
-        content: "I'm Sourab Mangrulkar. Nice to meet you. I'm here to help you with your questions.",
-        role: "assistant",
-    };
-    messages.push(message);
-    appendMessage(message);
+    initializeAndAppendMessage(GREETING_MESSAGE, "assistant");
 });
 document.getElementById("send").addEventListener("click", function () {
     onMessageSend();
@@ -172,4 +209,3 @@ function handleSendOnEnter(event) {
     }
 }
 document.getElementById('user-input').addEventListener('keypress', handleSendOnEnter);
-

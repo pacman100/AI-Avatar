@@ -8,5 +8,7 @@ I'm Sourab Mangrulkar; an Applied Scientist and Machine Learning Engineer from B
 
 ⚡ Painting 🎨, sketching ✍️ and poetry 📝 are my favourite hobbies. Recently, I've started reading up on stocks and economic markets.
 
-Contact me at:
-🔗 [LinkedIn](linkedin.com/in/sourab-m) | 💻 [GitHub](github.com/pacman100)
+Contact me via:
+🔗 [LinkedIn](https://www.linkedin.com/in/sourab-m)
+💻 [GitHub](https://www.github.com/pacman100)
+✉️ [Email](mailto:sourabmangrulkar@outlook.com)

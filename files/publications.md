@@ -1,5 +1,7 @@
 # Publications
 
+Below, you can find my recent and prominent publications. For more details, please refer to the Google Scholar website [Sourab Mangrulkar](https://scholar.google.com/citations?user=KIIOeqEAAAAJ&hl=en)
+
 1. **HISS: A Novel Hybrid Inference Architecture in Embedding Based Product Sourcing using Knowledge Distillation**
    - SIGIReCom'22 Workshop
    - Authors: Ankith M S, Sourab Mangrulkar, Vivek Sembium
@@ -21,4 +23,5 @@
    - Date: 2018-07-1
 
 5. **SantaCoder: don't reach for the stars!**
+   - Authors: Sourab Mangrulkar et al.
    - Arxiv, 2023

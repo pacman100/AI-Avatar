@@ -1,7 +1,16 @@
 # Work Experience
 
+Below is an outline of my work experience.
+
+## Applied Scientist II
+**Amazon Development Centre India Pvt. Ltd.** | 06/2024 - Present | Bengaluru, India
+
+*Search Relevance*
+
+- Using the latest advances in Large language Models (LLMs) and Generative AI (GenAI) to improve Search Relevance.
+
 ## ML Engineer
-**Hugging Face** | 04/2022 - Present | U.S. Remote
+**Hugging Face** | 04/2022 - 05-2024 | U.S. Remote
 
 *Open Source team - Parameter-Efficient Fine-tuning (PEFT), Accelerate and Trainer API*
 
@@ -41,9 +50,3 @@
 
 - Led team of 4 in Hackathon, building BERT-based Machine Reading Comprehension model
 - Collaborated on SharePoint Search Connector tool development
-
-## Research Intern
-**Indian Institute of Technology Mandi** | 05/2017 - 07/2017 | Mandi, Himachal Pradesh
-
-- Implemented Single Document Extractive Text Summarization
-- Achieved 8-10% performance improvement over state-of-the-art results
