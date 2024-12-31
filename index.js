@@ -176,6 +176,13 @@ document.getElementById("download").addEventListener("click", function () {
 
                         // Attach click listener immediately
                         button.addEventListener('click', () => {
+                            const chatBox = document.getElementById('chat-box');
+                            chatBox.innerHTML = ''; // Clear all messages in the chat box
+                            document.getElementById('user-input').value = ''; // Clear user input field
+                            while (messages.length > 1) {
+                                messages.pop();
+                            }
+                            initializeAndAppendMessage(GREETING_MESSAGE, "assistant");
                             document.getElementById('user-input').value = line;
                             onMessageSend();
                         });
