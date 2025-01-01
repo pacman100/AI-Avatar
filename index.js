@@ -68,7 +68,6 @@ function formatMarkdown(content) {
 }
 
 function onMessageSend() {
-    console.log(messages)
     const input = document.getElementById("user-input").value.trim();
     const message = {
         content: input,
