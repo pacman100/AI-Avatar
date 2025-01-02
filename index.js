@@ -2,7 +2,6 @@ import * as webllm from "https://esm.run/@mlc-ai/web-llm";
 import fetchAndCombineFiles from './context.js';
 marked.setOptions({ breaks: true, gfm: true });
 let CONTEXT_STRING = await fetchAndCombineFiles();
-console.log(CONTEXT_STRING);
 
 /*************** WebLLM logic ***************/
 const messages = [
