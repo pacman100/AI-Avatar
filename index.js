@@ -160,41 +160,64 @@ document.getElementById("download").addEventListener("click", function () {
     initializeWebLLMEngine().then(() => {
         document.getElementById("send").disabled = false;
         initializeAndAppendMessage(GREETING_MESSAGE, "assistant");
+
         // Fetch the faq.txt file and process its contents
         fetch('files/faq.md')
             .then(response => response.text())
             .then(data => {
                 const lines = data.split('\n');
                 const questionContainer = document.getElementById('example-questions');
+                questionContainer.innerHTML = ''; // Clear any existing content
+
+                // Create a dropdown select element
+                const select = document.createElement('select');
+                select.className = 'faq-dropdown';
+
+                // Default option
+                const defaultOption = document.createElement('option');
+                defaultOption.textContent = 'Select a frequently asked question (FAQs).';
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                select.appendChild(defaultOption);
 
                 lines.forEach(line => {
                     if (line.trim() !== '') { // Ensure it's not an empty line
-                        const button = document.createElement('button');
-                        button.className = 'example-question';
-                        button.setAttribute('data-question', line);
-                        button.textContent = line;
-
-                        // Attach click listener immediately
-                        button.addEventListener('click', () => {
-                            const chatBox = document.getElementById('chat-box');
-                            chatBox.innerHTML = ''; // Clear all messages in the chat box
-                            document.getElementById('user-input').value = ''; // Clear user input field
-                            while (messages.length > 1) {
-                                messages.pop();
-                            }
-                            initializeAndAppendMessage(GREETING_MESSAGE, "assistant");
-                            document.getElementById('user-input').value = line;
-                            onMessageSend();
-                        });
-                        questionContainer.appendChild(button);
+                        const option = document.createElement('option');
+                        option.value = line; // Store the question
+                        option.textContent = line; // Display text
+                        select.appendChild(option);
                     }
                 });
+
+                // Attach event listener to send the question to the chatbot
+                select.addEventListener('change', function () {
+                    const selectedQuestion = select.value;
+
+                    // Simulate sending question to chatbot
+                    const chatBox = document.getElementById('chat-box');
+                    chatBox.innerHTML = ''; // Clear previous messages
+                    while (messages.length > 1) {
+                        messages.pop();
+                    }
+                    initializeAndAppendMessage(GREETING_MESSAGE, "assistant");
+                    document.getElementById('user-input').value = selectedQuestion; // Set the question as input
+                    onMessageSend(); // Trigger chatbot response
+
+                    // Reset the dropdown after selection
+                    setTimeout(() => {
+                        select.selectedIndex = 0; // Reset to default option
+                    }, 500); // Slight delay for smooth interaction
+                });
+
+                // Append dropdown to the container
+                questionContainer.appendChild(select);
             })
             .catch(error => {
                 console.error('Error fetching the faq.txt file:', error);
             });
     });
 });
+
 document.getElementById('clear-conversation').addEventListener('click', function () {
     const chatBox = document.getElementById('chat-box');
     chatBox.innerHTML = ''; // Clear all messages in the chat box
@@ -204,6 +227,12 @@ document.getElementById('clear-conversation').addEventListener('click', function
         messages.pop();
     }
     initializeAndAppendMessage(GREETING_MESSAGE, "assistant");
+
+    // Reset the FAQ dropdown menu
+    const faqDropdown = document.querySelector('.faq-dropdown');
+    if (faqDropdown) {
+        faqDropdown.selectedIndex = 0; // Reset to the default "Select a question" option
+    }
 });
 document.getElementById("send").addEventListener("click", function () {
     onMessageSend();

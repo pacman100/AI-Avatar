@@ -10,18 +10,51 @@ body {
     min-height: 100vh;
 }
 
-.header {
-    text-align: center;
+/* Use a proper gradient background instead of 'background-color' */
+.profile-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    /* Updated */
     padding: 20px;
-    background-color: #4a90e2;
-    color: white;
-    width: 100%;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    color: #fff;
+    /* Text shows nicely on dark background */
 }
 
-.header h1 {
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 8px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-info h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+}
+
+.chatbot-caption {
+    margin-top: 8px;
+    font-size: 1rem;
+    /* Lighten or darken if needed to contrast more */
+    color: #f0f0f0;
+}
+
+.header {
+    display: none;
+}
+
+.hidden-header-text {
+    display: none;
 }
 
 .header p {
@@ -29,6 +62,7 @@ body {
     font-size: 1rem;
 }
 
+/* Add a highlight line below Step headings for emphasis */
 .step-section {
     background: white;
     margin: 20px auto;
@@ -43,6 +77,17 @@ body {
     margin-top: 0;
     color: #4a90e2;
     font-size: 1.5rem;
+    position: relative;
+}
+
+.step-section h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    margin-top: 6px;
+    border-radius: 3px;
 }
 
 .download-container {
@@ -75,6 +120,7 @@ body {
     font-size: 0.9rem;
 }
 
+/* Add subtle border or accent color to separate chat area */
 .chat-container {
     display: flex;
     flex-direction: column;
@@ -85,6 +131,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     overflow: hidden;
+    border: 3px solid #cfd5df;
+    /* subtle accent border */
 }
 
 .chat-box {
@@ -115,6 +163,8 @@ body {
     border-radius: 5px;
     font-size: 1rem;
     margin-right: 10px;
+    transition: border 0.2s ease;
+    /* smoother focus transition */
 }
 
 .chat-input:focus {
@@ -167,7 +217,6 @@ body {
     margin: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .header h1 {
         font-size: 1.8rem;
@@ -223,10 +272,20 @@ body {
     background: #e0e0e0;
 }
 
-/* Responsive tweaks for smaller screens */
 @media (max-width: 768px) {
     .example-question {
         padding: 6px 12px;
         font-size: 0.85rem;
     }
+}
+
+.faq-dropdown {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    cursor: pointer;
 }
