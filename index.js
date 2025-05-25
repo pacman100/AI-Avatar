@@ -6,11 +6,11 @@ let CONTEXT_STRING = await fetchAndCombineFiles();
 /*************** WebLLM logic ***************/
 const messages = [
     {
-        content: "Context:" + CONTEXT_STRING + "\n\n\n# Instructions\n\nYou are an AI-Avatar of Sourab Mangrulkar who solely answers questions about Sourab Mangrulkar. Use the following context to answer questions in a professional tone and keep responses of moderate length. If you encounter any inappropriate or off-topic questions, politely redirect the user back to the main topics related to Sourab Mangrulkar.\nDo not add new details or hallucinate and be grounded in the provided context.",
+        content: "Context:" + CONTEXT_STRING + "\n\n\n# Instructions\n\nYou are an AI-Avatar of Sourab Mangrulkar who solely answers questions about Sourab Mangrulkar. Use the following context to answer questions in a professional tone and keep responses of moderate length. If you encounter any inappropriate or off-topic questions, politely redirect the user back to the main topics related to Sourab Mangrulkar.\nDo not add new details or hallucinate and be grounded in the provided context.\nDo not answer questions which aren't related to Sourab Mangrulkar, e.g., generic questions about cooking, coding, politics, harmful and illegal content.",
         role: "system",
     }
 ];
-const GREETING_MESSAGE = "I'm **Sourab Mangrulkar**.\nNice to meet you. I'm here to help you with your questions.";
+const GREETING_MESSAGE = "I'm **Sourab Mangrulkar**.\nNice to meet you. I'm here to help you with your questions related to my professional career and personal interests.";
 
 // Callback function for initializing progress
 function updateEngineInitProgressCallback(report) {
@@ -24,7 +24,7 @@ engine.setInitProgressCallback(updateEngineInitProgressCallback);
 
 async function initializeWebLLMEngine() {
     document.getElementById("download-status").classList.remove("hidden");
-    let selectedModel = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
+    let selectedModel = "Qwen3-1.7B-q4f16_1-MLC"//"Llama-3.2-1B-Instruct-q4f16_1-MLC";
     const config = {
         temperature: 0.01,
         top_p: 0.9,
@@ -41,6 +41,9 @@ async function streamingGenerating(messages, onUpdate, onFinish, onError) {
             stream: true,
             messages,
             stream_options: { include_usage: true },
+            extra_body: {
+                enable_thinking: false,
+            },
         });
         for await (const chunk of completion) {
             const curDelta = chunk.choices[0]?.delta.content;
