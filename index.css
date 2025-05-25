@@ -326,3 +326,51 @@ footer {
 .hidden-header-text {
     display: none;
 }
+
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .chat-container {
+        height: auto;
+    }
+
+    .chat-box {
+        max-height: 50vh;
+    }
+
+    .chat-input-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .chat-input {
+        flex: 1;
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+
+    .primary-btn {
+        padding: 0.75rem 1rem;
+        width: auto;
+    }
+}
+
+.chat-input-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+}
+
+.message {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
