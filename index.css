@@ -1,5 +1,5 @@
+/* Core theme */
 :root {
-    /* Modern light theme with cool blues */
     --color-bg: #f9fafb;
     --color-bg-alt: #ffffff;
     --color-text: #111827;
@@ -28,7 +28,6 @@ body {
     min-height: 100vh;
 }
 
-/* Centered header without title */
 header {
     width: 100%;
     background: var(--color-primary);
@@ -113,8 +112,9 @@ main {
 }
 
 .primary-btn {
-    display: block;
-    margin: 1rem auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     background: var(--color-primary);
     color: #fff;
     border: none;
@@ -138,7 +138,7 @@ main {
 .chat-container {
     display: flex;
     flex-direction: column;
-    height: 28rem;
+    height: auto;
 }
 
 .chat-box {
@@ -150,9 +150,11 @@ main {
 
 .chat-input-container {
     display: flex;
-    gap: 1rem;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
     padding: 1rem;
     background: var(--color-bg);
+    width: 100%;
 }
 
 .chat-input {
@@ -169,21 +171,18 @@ main {
     outline: none;
 }
 
-/* Model download info */
 .download-info {
     font-size: 0.875rem;
     color: var(--color-secondary);
     margin-left: 0.75rem;
 }
 
-/* Prefill token and speed info */
 .model-info {
     font-size: 0.875rem;
     color: var(--color-secondary);
     margin-top: 0.5rem;
 }
 
-/* Message bubbles */
 .message-container {
     display: flex;
     margin-bottom: 1rem;
@@ -206,7 +205,8 @@ main {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     background: var(--color-bg-alt);
     color: var(--color-text);
-    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .message-container.user .message {
@@ -244,19 +244,25 @@ main {
 
 .faq-dropdown {
     width: 100%;
+    max-width: 100%;
     padding: 0.75rem 1rem;
     border: 1px solid var(--color-secondary);
     border-radius: var(--border-radius);
     font-size: 1rem;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: var(--color-bg-alt);
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 140 140' width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20,50 70,100 120,50' fill='none' stroke='%236B7280' stroke-width='20' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
 }
 
-/* code block wrapper */
 .code-block {
     position: relative;
     background: #2d2d2d;
-    /* dark background */
     color: #f8f8f2;
-    /* light code color */
     border-radius: 8px;
     padding: 1rem;
     margin: 1.5rem 0;
@@ -266,7 +272,6 @@ main {
     line-height: 1.4;
 }
 
-/* strip default margins/padding from the <pre> itself */
 .code-block pre {
     background: transparent;
     margin: 0;
@@ -275,7 +280,6 @@ main {
     word-break: break-word;
 }
 
-/* copy button */
 .copy-btn {
     position: absolute;
     top: 0.5rem;
@@ -293,12 +297,10 @@ main {
     opacity: 0.8;
 }
 
-
 .copy-btn:hover {
     background: var(--color-primary-light);
 }
 
-/* Footer styling */
 footer {
     width: 100%;
     background: var(--color-primary);
@@ -307,70 +309,26 @@ footer {
     padding: 1rem;
 }
 
-@media (max-width: 768px) {
-    main {
-        padding: 1rem;
-    }
-
-    .profile-section {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .chat-container {
-        height: 22rem;
-    }
-}
-
-
 .hidden-header-text {
     display: none;
 }
 
-@media (max-width: 768px) {
-    main {
-        padding: 1rem;
-    }
-
-    .profile-section {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .chat-container {
-        height: auto;
-    }
-
-    .chat-box {
-        max-height: 50vh;
-    }
-
-    .chat-input-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .chat-input {
-        flex: 1;
-        font-size: 1rem;
-        padding: 0.75rem;
-    }
-
-    .primary-btn {
-        padding: 0.75rem 1rem;
-        width: auto;
-    }
-}
-
-.chat-input-container {
+.step-section {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
 }
 
-.message {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+#example-questions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.faq-dropdown {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
