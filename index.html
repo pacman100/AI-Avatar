@@ -33,7 +33,7 @@
       <div class="download-container">
         <button id="download" class="primary-btn"><i class="fa-solid fa-circle-down"></i> Download</button>
       </div>
-      <p id="download-status" class="status hidden"></p>
+      <span id="download-info" class="download-info hidden"></span>
     </section>
 
     <section class="step-section">
@@ -44,7 +44,7 @@
       </div>
       <div class="chat-container">
         <div id="chat-box" class="chat-box"></div>
-        <div id="chat-stats" class="chat-stats hidden"></div>
+        <div id="chat-stats" class="model-info hidden"></div>
         <div class="chat-input-container">
           <input type="text" id="user-input" class="chat-input" placeholder="Type a message..." />
           <button id="send" class="primary-btn" style="margin-right: 10px" disabled><i
@@ -60,6 +60,7 @@
   </footer>
 
   <script src="./index.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </body>
 
 </html>

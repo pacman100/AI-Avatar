@@ -15,7 +15,9 @@ const GREETING_MESSAGE = "I'm **Sourab Mangrulkar**.\nNice to meet you. I'm here
 // Callback function for initializing progress
 function updateEngineInitProgressCallback(report) {
     console.log("initialize", report.progress);
-    document.getElementById("download-status").textContent = report.text;
+    const di = document.getElementById("download-info");
+    di.classList.remove("hidden");
+    di.textContent = report.text;
 }
 
 // Create engine instance
@@ -23,7 +25,7 @@ const engine = new webllm.MLCEngine();
 engine.setInitProgressCallback(updateEngineInitProgressCallback);
 
 async function initializeWebLLMEngine() {
-    document.getElementById("download-status").classList.remove("hidden");
+    document.getElementById("download-info").classList.remove("hidden");
     let selectedModel = "Qwen3-1.7B-q4f16_1-MLC"//"Llama-3.2-1B-Instruct-q4f16_1-MLC";
     const config = {
         temperature: 0.01,
@@ -86,7 +88,7 @@ function onMessageSend() {
     document.getElementById("user-input").value = "";
     document
         .getElementById("user-input")
-        .setAttribute("placeholder", "Generating...");
+        .setAttribute("placeholder", "Type a message...");
 
     const aiMessage = {
         content: "typing...",
@@ -126,7 +128,6 @@ function appendMessage(message) {
     const newMessage = document.createElement("div");
     newMessage.classList.add("message");
     newMessage.innerHTML = formatMarkdown(message.content);
-
     if (message.role === "user") {
         container.classList.add("user");
     } else {
@@ -144,6 +145,26 @@ function updateLastMessage(content) {
         .querySelectorAll(".message");
     const lastMessageDom = messageDoms[messageDoms.length - 1];
     lastMessageDom.innerHTML = formatMarkdown(content);
+    lastMessageDom.querySelectorAll('pre').forEach(pre => {
+        // create wrapper
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block';
+
+        // create copy button
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.textContent = 'Copy';
+        btn.addEventListener('click', () => {
+            navigator.clipboard.writeText(pre.textContent);
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 1500);
+        });
+
+        // insert wrapper around <pre>
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(btn);
+        wrapper.appendChild(pre);
+    });
 }
 
 function initializeAndAppendMessage(content, role) {
