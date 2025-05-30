@@ -1,4 +1,4 @@
-I'm Sourab Mangrulkar; an Applied Scientist and Machine Learning Engineer from Bharat (India) 🇮🇳. I have 6 years experience as ML Scientist/ML Engineer with proven success in designing, implementing & mainstreaming large scale machine learning/deep learning models.
+I'm Sourab Mangrulkar; an Applied Scientist and Machine Learning Engineer from Bharat (India) 🇮🇳. I have 7+ years experience as ML Scientist/ML Engineer with proven success in designing, implementing & mainstreaming large scale machine learning/deep learning models.
 
 🔭 I’m currently working as an Applied Scientist at Amazon.
 
